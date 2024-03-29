@@ -5,7 +5,7 @@ export default {
     methods: {
         async getInteractiveGroups() {
             let response = await axios.get(URL + "/interactive-groups")
-            this.interactiveGroups = response.data
+            this.interactiveGroups = await response.data
         }
     }
 }

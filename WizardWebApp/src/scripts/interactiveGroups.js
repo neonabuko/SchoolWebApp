@@ -6,18 +6,18 @@ export default {
         async getInteractiveGroupAsync() {
             const groupId = this.$route.params.groupId;
             let response = await axios.get(URL + `/interactive-groups/${groupId}`)
-            this.interactiveGroup = response.data
+            this.interactiveGroup = await response.data
         },
         async addStudentsToStudentsClassesMapAsync() {
             const groupId = this.$route.params.groupId;
             let response = await axios.get(URL + `/interactive-classes/interactive-group/${groupId}/today`)
-            for (let student of response.data) {
+            for (let student of await response.data) {
                 this.studentsClasses.set(student, undefined)
             }
         },
         async getFirstClassScheduledForTodayByStudentIdAsync(studentId) {
             let response = await axios.get(URL + `/interactive-classes/student/${studentId}/today`)
-            return response.data
+            return await response.data
         }
     }
 }

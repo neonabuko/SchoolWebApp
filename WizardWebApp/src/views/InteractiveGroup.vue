@@ -27,7 +27,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
+        <tr v-if="studentsClasses.get(student) != null">
           <td title="Lesson">
             <a>
               {{ studentsClasses.get(student).lesson }}

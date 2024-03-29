@@ -16,7 +16,7 @@ const routes = [
     {path: '/Students/:studentId', name: 'Student', component: Student},
     {path: '/Admin-Center', name: 'Admin Center', component: AdminCenter},
     {path: '/MainForm/:entityIndex', name: 'MainForm', component: MainForm},
-    {path: '/MainTable/:entityId', name: 'MainTable', component: MainTable}
+    {path: '/MainTable/:entityId', name: 'MainTable', component: MainTable},
 ]
 
 const router = createRouter({

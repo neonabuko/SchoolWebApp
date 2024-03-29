@@ -36,5 +36,6 @@ export const classParams = new Map([
     ['oral', 'Oral'],
     ['hwDelivered', 'HW Delivered'],
     ['hwGrade', 'HW Grade'],
-    ['studentPresent', 'Student Present']
+    ['studentPresent', 'Student Present'],
+    ['studentId', 'Student']
 ])
