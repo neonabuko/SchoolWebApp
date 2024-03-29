@@ -1,0 +1,128 @@
+:root {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container .custom-card-div {
+    /*border: 1px dashed yellow;*/
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-row-gap: 2vw;
+    grid-column-gap: 2vw;
+    
+}
+
+.container .custom-card-div-middle {
+    /*border: 1px dotted orangered;*/
+    padding: .2vw;
+}
+
+.container .custom-card-div-inside {
+    background-color: #092f56;
+    text-align: center;
+    border-radius: 5%;
+    color: white;
+}
+
+.custom-card-inner-body {
+    max-height: 30px;
+    overflow: hidden;
+}
+
+.wizard-card-img {
+    scale: 100%;
+}
+
+.card {
+    transition: transform .5s;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+    transition-property: transform;
+    transform: scale(1);
+    overflow-x: hidden;
+}
+
+.card:hover{
+    transform: scale(1.04);
+}
+
+html, body {
+    height: 100%;
+}
+
+.nav-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 30%;
+}
+
+.navbar {
+    background-color: #092f56;
+}
+
+nav h5 {
+    color: white;
+}
+
+.nav-link {
+    color: white;
+}
+
+.main-form-container {
+    max-width: 350px;
+    padding: 150px 1rem 1rem;
+}
+
+.student-name {
+    text-align: left;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+table {
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-collapse: collapse;
+}
+
+table th,
+table td {
+    vertical-align: middle;
+}
+
+.day {
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    table th,
+    table td {
+        font-size: 0.8em;
+    }
+    
+    table span {
+        text-align: center;
+        min-width: 200px;
+    }
+    
+    .custom-row {
+        width: 364px;
+    }
+    
+    .container .custom-card-div {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+}
