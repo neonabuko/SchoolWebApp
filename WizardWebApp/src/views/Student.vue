@@ -8,9 +8,8 @@
           <th>Lesson</th>
           <th>Date</th>
           <th>Oral</th>
-          <th style="font-size: 12px">HW Delivered</th>
-          <th style="font-size: 12px">HW Grade</th>
-          <th>Present</th>
+          <th>HW Delivered</th>
+          <th>HW Grade</th>
         </tr>
         </thead>
         <tbody v-for="interactiveClass in interactiveClasses" :key="interactiveClass.id">
@@ -31,18 +30,13 @@
             </a>
           </td>
           <td>
-            <a :style="{ color: interactiveClass.hwDelivered ? 'green' : 'red' }">
-              {{ interactiveClass.hwDelivered ? 'YES' : 'NO' }}
+            <a :style="{ color: interactiveClass.hwDelivered.toLowerCase() === 'true' ? 'green' : 'red' }">
+              {{ interactiveClass.hwDelivered.toLowerCase() === 'true' ? 'YES' : 'NO' }}
             </a>
           </td>
           <td>
             <a>
               {{ interactiveClass.hwGrade.toUpperCase() }}
-            </a>
-          </td>
-          <td>
-            <a :style="{ color: interactiveClass.studentPresent ? 'green' : 'red' }">
-              {{ interactiveClass.studentPresent ? 'YES' : 'NO' }}
             </a>
           </td>
         </tr>

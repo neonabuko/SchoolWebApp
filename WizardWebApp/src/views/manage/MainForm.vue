@@ -1,121 +1,114 @@
 <template>
-  <main class="d-flex align-items-center">
-    <div class="w-100 m-auto main-form-container">
-      <form @submit.prevent="handleSubmit">
-        <img src="../../assets/wizard-logo.jpg"
-             alt="logo"
-             class="mb-3 shadow"
-             height="80"
-             width="80"
-             style="border-radius: 50%">
-        <h1 class="h2 mb-3 mx-2 fw-normal">New {{ entityNames.at(entityIndex) }}</h1>
-
-        <div class="form-floating"
-             v-for="(key, param) in entityParams.at(entityIndex)"
-             :key="param">
-
-          <input class="form-control"
-                 :placeholder="param"
-                 v-model="entitySubmit[key.at(0)]"
-                 @input="enableDropdown(entitySubmit['studentId'])"
-                 :id="param"
-                 type="text">
-          <label :for="param">{{ key.at(1) }}</label>
-
-          <div class="dropdown bg-dark" id="suggestions-container-id" v-show="showDropdown"
-               v-if="'studentId'.includes(key.at(0)) && showDropdown">
-            <div v-if="matchedSuggestions.length === 0" class=" dropdown-item px-2">No suggestions found</div>
-            <button v-for="(suggestion, index) in matchedSuggestions"
-                    class="dropdown-item px-2 mb-2 w-auto"
-                    :key="index"
-                    @click="selectSuggestion(suggestion.name)">
-              {{ suggestion.name }}
-            </button>
-          </div>
-
-        </div>
-        <button class="btn btn-primary w-100 py-2 mt-4"
-                type="submit"
-                @click="createEntity(entityIndex, entitySubmit)">
-          Submit
+  <main class="w-100 m-auto main-form-container">
+    <form @submit.prevent="handleSubmit">
+      <img src="../../assets/wizard-logo.jpg"
+           alt="logo"
+           class="mb-3 shadow main-form-logo"
+           style="border-radius: 50%">
+      <div id="main-form-header-div">
+        <button @click="goBack"
+                title="Go back"
+                type="button"
+                class="border-0 bg-body-tertiary">
+          <i class="fas fa-chevron-left"></i>
         </button>
-      </form>
-    </div>
+        <h1 class="h2">New {{ entityNames.at(entityIndex) }}</h1>
+      </div>
+
+      <div class="m-1"
+           v-for="(key, paramIndex) in entityParams.at(entityIndex)"
+           :key="paramIndex">
+
+        <div>
+          <dynamic-input :key="paramIndex"
+                         :type="key.at(1).at(1)"
+                         :placeholder="key.at(1).at(0)"
+                         :value="entitySubmit[key.at(0)]"
+                         :id="paramIndex.toString()"
+                         :label="key.at(1).at(0)"
+                         :flatpickrOptions="flatpickrOptions"
+                         :searchInput="searchInput"
+                         :showDropdown="showDropdown"
+                         :matchedSuggestions="matchedSuggestions"
+                         :suggestionSelected="suggestionSelected">
+          </dynamic-input>
+        </div>
+
+        <div class="d-flex justify-content-end flex-items-center" v-if="'select'.includes(key.at(1).at(1))">
+          <select class="form-select"
+                  :name="key.at(1).at(0)"
+                  :id="paramIndex"
+                  :title="key.at(1).at(0)"
+                  v-model="entitySubmit[key.at(0)]">
+            <option value="R">R</option>
+            <option value="B">B</option>
+            <option value="MB">MB</option>
+            <option value="O">O</option>
+          </select>
+          <label :for="paramIndex" class="w-75 input-group-text text-nowrap">{{ key.at(1).at(0) }}</label>
+        </div>
+
+      </div>
+      <button class="btn btn-primary w-100 py-2"
+              type="submit"
+              id="main-form-submit-btn"
+              @click="createEntity(entityIndex, entitySubmit)">
+        Submit
+      </button>
+    </form>
   </main>
 </template>
 
 <script>
-import axios from "axios";
-import {URL} from "../../scripts/variables.js";
-import {teacherParams} from "../../scripts/variables.js";
-import {groupParams} from "../../scripts/variables.js";
-import {studentParams} from "../../scripts/variables.js";
-import {classParams} from "../../scripts/variables.js";
-import {routes} from "../../scripts/variables.js";
+import {teacherParams, groupParams, studentParams, classParams, routes} from '../../scripts/variables.js'
 import general from "../../scripts/general.js";
+import Flatpickr from 'vue-flatpickr-component'
+import 'flatpickr/dist/flatpickr.css'
+import mainForm from "../../scripts/mainForm.js";
+import DynamicInput from "../../components/DynamicInput.vue";
 
 export default {
+  components: {Flatpickr, DynamicInput},
+
   data() {
     return {
+      routes,
       suggestions: [],
       entityIndex: '',
-      entityNames: [
-        'Teacher',
-        'Group',
-        'Student',
-        'Class'
-      ],
-      entityParams: [
-        teacherParams,
-        groupParams,
-        studentParams,
-        classParams
-      ],
-      entitySubmit: {}
+      entityNames: ['Teacher', 'Group', 'Student', 'Class'],
+      entityParams: [teacherParams, groupParams, studentParams, classParams],
+      entitySubmit: {},
+      timeoutId: null,
+      searchInput: '',
+      canSearch: false,
+      parentEntityId: '',
+      parentEntityParam: '',
+      suggestionSelected: false,
+      flatpickrOptions: {
+        enableTime: true,
+        dateFormat: 'd/m H:i'
+      }
     }
-  }, computed: {
+  },
+
+  computed: {
     matchedSuggestions() {
-      if (this.entitySubmit['studentId'] != null)
-        return this.suggestions.filter(suggestion =>
-            suggestion.name.toLowerCase().startsWith(this.entitySubmit['studentId'].toLowerCase()))
+      return this.suggestions.filter(suggestion =>
+          suggestion.name.toLowerCase().startsWith((this.searchInput ?? '').toString().toLowerCase()))
     },
     showDropdown() {
-      if (this.entitySubmit['studentId'] != null) return this.entitySubmit['studentId'].length > 0
+      return (this.searchInput ?? '').length > 0
     }
-  }, methods: {
-    async enableDropdown(name) {
-      let userInput = this.entitySubmit['studentId']
-      if (userInput != null && userInput.length > 0) {
-        let response = await axios.get(URL + `/students/by-name/${name}`)
-        this.suggestions = response.data
-        let suggestionsContainer = document.getElementById('suggestions-container-id')
-        if (suggestionsContainer != null) suggestionsContainer.style.display = 'auto'
-      }
-    },
-    selectSuggestion(suggestion) {
-      this.entitySubmit['studentId'] = suggestion
-      let suggestionsContainer = document.getElementById('suggestions-container-id')
-      if (suggestionsContainer != null) suggestionsContainer.style.display = 'none'
-    },
-    ...general.methods,
-    async getEntity() {
-      this.entityIndex = await this.$route.params.entityIndex
-    },
-    async createEntity(entityIndex, params) {
-      console.log(params)
-      const baseRoute = routes.at(entityIndex)
-      await axios.post(URL + `${baseRoute}`, params)
-      this.goBack()
-    }
-  }, mounted() {
-    this.getEntity()
+  },
+
+  methods: {
+    ...general.methods, 
+    ...mainForm.methods
+  },
+
+  mounted() {
+    this.getEntityIndex()
   }
 }
 
 </script>
-
-<style scoped>
-.dropdown-item:hover {
-  background-color: black;
-}
-</style>

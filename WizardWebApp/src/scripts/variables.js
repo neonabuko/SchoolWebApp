@@ -15,27 +15,27 @@ export const adminCenterEntityNames = [
 ]
 
 export const teacherParams = new Map([
-    ['name', 'Name'],
-    ['birthday', 'Birthday']
+    ['name', ['Name', 'input']],
+    ['birthday', ['Birthday', 'input']]
 ])
 
 export const groupParams = new Map([
-    ['name', 'Name'],
-    ['daysOfTheWeek', 'Days of the week'],
-    ['time', 'Time']
+    ['name', ['Name', 'input']],
+    ['daysOfTheWeek', ['Days of the week', 'input']],
+    ['time', ['Time', 'input']]
 ])
 
 export const studentParams = new Map([
-    ['name', 'Name'],
-    ['birthday', 'Birthday']
+    ['name', ['Name', 'input']],
+    ['birthday', ['Birthday', 'input']],
+    ['interactiveGroupId', ['Group', 'search']]
 ])
 
 export const classParams = new Map([
-    ['lesson', 'Lesson'],
-    ['dateTime', 'Date/Time'],
-    ['oral', 'Oral'],
-    ['hwDelivered', 'HW Delivered'],
-    ['hwGrade', 'HW Grade'],
-    ['studentPresent', 'Student Present'],
-    ['studentId', 'Student']
+    ['lesson', ['L', 'input']],
+    ['dateTime', ['Date', 'date']],
+    ['oral', ['Oral', 'select']],
+    ['hwDelivered', ['HW?', 'checkbox']],
+    ['hwGrade', ['HW Grade', 'select']],
+    ['studentId', ['Student', 'search']]
 ])

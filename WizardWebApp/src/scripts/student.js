@@ -15,7 +15,7 @@ export default {
         },
         async deleteClass(id) {
             await axios.delete(URL + `/interactive-classes/${id}`)
-            this.getClasses()
+            await this.getClasses()
         }
     }
 }

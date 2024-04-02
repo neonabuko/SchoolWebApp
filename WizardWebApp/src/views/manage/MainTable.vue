@@ -1,7 +1,7 @@
 <template>
   <main class="main-table container">
     <div class="main-table-header d-inline-flex flex-items-center">
-      <button @click="goBack" 
+      <button @click="goBack"
               title="Go back"
               type="button"
               class="border-0 bg-body-tertiary">
@@ -12,21 +12,24 @@
       </div>
     </div>
 
-    <table class="table table-bordered table-striped table-hover table-sm">
+    <table class="table table-bordered table-striped table-hover">
       <thead>
       <tr>
-        <th class="bg-primary" v-for="paramNames in params.at(routeId)">
+        <th v-for="paramNames in params.at(routeId)">
             <span>
-            {{ paramNames.at(1) }}
+            {{ paramNames.at(1).at(0) }}
             </span>
         </th>
       </tr>
       </thead>
-      <tbody>
-      <tr v-for="entityValues in entities">
+      <tbody v-for="entityValues in entities">
+      <tr>
         <td v-for="value in entityValues">
-            <span :style="{ color: 'truefalse'.includes(value) ? ('true'.includes(value) ? 'green' : 'red') : '' }">
-              {{ 'truefalse'.includes(value) ? ('true'.includes(value) ? 'YES' : 'NO') : value }}
+            <span :style="{ 
+              color: 'TrueFalse'.includes(value) ? ('True'.includes(value) ? 'green' : 'red') : '',
+              fontWeight: 'TrueFalse'.includes(value) ? 'bold' : ''
+            }">
+              {{ 'TrueFalse'.includes(value) ? ('True'.includes(value) ? 'YES' : 'NO') : value }}
             </span>
         </td>
       </tr>
@@ -68,7 +71,6 @@ export default {
       ],
       entityRoutes: [...routes],
       entities: [],
-      // addingEntity: false,
       entitySubmit: {}
     }
   }, computed: {
@@ -82,8 +84,12 @@ export default {
       for (let entity of this.entities) {
         delete entity.id
         delete entity.teacherId
-        delete entity.interactiveGroupId
-        delete entity.studentId
+        delete entity.studentPresent
+
+        if (entity.studentId) {
+          let studentResponse = await axios.get(URL + `/students/${entity.studentId}`)
+          entity.studentId = studentResponse.data.name
+        }
       }
     },
     ...general.methods

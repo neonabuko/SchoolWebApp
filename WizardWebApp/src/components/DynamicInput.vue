@@ -4,7 +4,6 @@
       <div class="form-text">
         <input class="form-control"
                :placeholder="placeholder"
-               v-model="value"
                :id="id"
                type="text">
       </div>
@@ -13,7 +12,6 @@
     <template v-if="type === 'checkbox'">
       <div class="d-flex flex-items-center justify-content-end">
         <input class="form-check-input form-check mx-1"
-               v-model="value"
                :id="id"
                type="checkbox">
         <label class="input-group-text form-check-label" :for="id">{{ label }}</label>
@@ -23,7 +21,7 @@
     <template v-if="type === 'date'">
       <div class="d-flex flex-items-center">
         <Flatpickr class="form-control"
-                   v-model.lazy="value"
+                   model-value=""
                    :id="id"
                    :config="flatpickrOptions"
                    :placeholder="placeholder">
@@ -40,8 +38,8 @@
       <div class="d-flex flex-items-center">
         <div class="input-group">
           <input class="form-control"
-                 v-model="searchInput"
                  @input="enableDropdown(searchInput)"
+                 :value="searchInput"
                  :placeholder="placeholder"
                  :id="id"
                  type="search">
@@ -56,7 +54,7 @@
         <div class="dropdown shadow"
              id="suggestions-container-id"
              v-show="showDropdown">
-          <div v-if="matchedSuggestions.length === 0"
+          <div v-if="(matchedSuggestions ?? '').length === 0"
                style="border-bottom: 1px solid #474e55"
                class="dropdown-item bg-warning-subtle p-1">
             No suggestions found
@@ -106,9 +104,6 @@ export default {
     matchedSuggestions: Array,
     suggestionSelected: Boolean
   },
-  computed: {
-    ...mainForm.computed
-  },
 
   methods: {
     ...general.methods, 
@@ -116,8 +111,3 @@ export default {
   },
 }
 </script>
-
-<!-- You can add CSS styling in the <style> section if needed -->
-<style scoped>
-/* Scoped styles for your component */
-</style>

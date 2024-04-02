@@ -43,7 +43,6 @@
                   type="checkbox"
                   role="switch"
                   id="flexSwitchCheckChecked"
-                  checked
                   @click="toggleThemeSwitch">
             </div>
             
