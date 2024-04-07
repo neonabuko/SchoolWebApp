@@ -9,9 +9,7 @@ export const apiRoutes = [
 
 export const appRoutes = [
     ['/', 'Home'],
-    ['/Teachers', 'Teachers'],
-    ['/Interactive-Classes', 'Interactive Classes'],
-    ['/Admin-Center', 'Admin Center']
+    ['/admin', 'Admin Center']
 ]
 
 export const adminCenterEntityNames = [

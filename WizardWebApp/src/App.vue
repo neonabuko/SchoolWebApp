@@ -1,35 +1,33 @@
 <template>
   <header>
     <div>
-      <nav class="navbar navbar-expand-md border-dark shadow-sm" id="nav-wizard">
-        <router-link to="/" class="navbar-brand mb-0 mx-2" href="#">
-          <img src="./assets/wizard-logo.jpg" alt="logo" class="d-inline-block align-top nav-logo">
-          <h5 class="d-inline-block ms-2 align-bottom">Wizard App</h5>
+      <nav class="navbar navbar-expand-sm border-dark shadow-sm" id="nav-wizard">
+        <router-link to="/" class="" href="#">
+          <a class="nav-title navbar-brand">Wizard App</a>
         </router-link>
 
         <i aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
-          class="navbar-toggler mx-2" data-bs-target="#nav-wizard-items" data-bs-toggle="collapse" type="button"
+          class="navbar-toggler" data-bs-target="#nav-wizard-items" data-bs-toggle="collapse" type="button"
           id="nav-menu-button">
           <i class="fas fa-navicon"></i>
         </i>
 
-        <div class="collapse navbar-collapse mx-3 justify-content-end" id="nav-wizard-items">
+        <div class="collapse navbar-collapse justify-content-end" id="nav-wizard-items">
+
           <ul class="navbar-nav" ref="navLinks">
-            <li class="nav-item" v-for="route in routes">
-              <router-link 
-              class="nav-link" :class="{ 'tab-active': isTabActive(route.at(0)) }" :to="route.at(0)">
+            <li class="navbar-list" v-for="route in routes">
+              <router-link class="nav-link mx-2 p-0" :class="{ 'tab-active': isTabActive(route.at(0)) }" :to="route.at(0)">
                 {{ route.at(1) }}
               </router-link>
             </li>
           </ul>
+
           <div class="theme-changer flex-items-center d-inline-flex">
             <i class="fas fa-sun mx-2" id="sun" :style="{ color: !darkThemeIsOn ? 'orange' : 'gray' }"></i>
-
             <div class="form-switch">
               <input class="form-check-input " type="checkbox" role="switch" id="flexSwitchCheckChecked"
                 @click="toggleThemeSwitch">
             </div>
-
             <i class="fas fa-moon" id="moon" :style="{ color: darkThemeIsOn ? 'lightskyblue' : 'gray' }"></i>
           </div>
         </div>

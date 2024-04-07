@@ -4,10 +4,16 @@
       <button @click="goBack" title="Go back" type="button" class="border-0 bg-body-tertiary">
         <i class="fas fa-chevron-left"></i>
       </button>
-      <div class="">
+      <div>
         <h2 class="h1 mx-3" style="font-size: 40px">{{ entityNames.at(routeId) }}</h2>
       </div>
+      <div class="btn-new-entity d-flex justify-content-end w-100 mx-1 mb-1">
+      <router-link :to="{ name: 'MainForm', params: { entityIndex: routeId } }">
+        <button class="btn btn-primary">+ New</button>
+      </router-link>
     </div>
+    </div>
+    
     <table class="table table-bordered table-striped table-hover">
       <thead>
         <tr>
@@ -35,11 +41,6 @@
       <h3 class="text-center" v-if="loading">
         <div class="spinner"></div>
       </h3>
-    </div>
-    <div class="btn-new-entity text-end mx-1 mb-1">
-      <router-link :to="{ name: 'MainForm', params: { entityIndex: routeId } }">
-        <button class="btn btn-primary">+ New</button>
-      </router-link>
     </div>
   </main>
 </template>
