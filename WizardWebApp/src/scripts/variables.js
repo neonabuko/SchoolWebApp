@@ -1,10 +1,17 @@
 export const URL =  "http://100.102.72.128:5170"
 
-export const routes = [
+export const apiRoutes = [
     '/teachers',
     '/interactive-groups',
     '/students',
     '/interactive-classes'
+]
+
+export const appRoutes = [
+    ['/', 'Home'],
+    ['/Teachers', 'Teachers'],
+    ['/Interactive-Classes', 'Interactive Classes'],
+    ['/Admin-Center', 'Admin Center']
 ]
 
 export const adminCenterEntityNames = [
@@ -21,13 +28,13 @@ export const teacherParams = new Map([
 
 export const groupParams = new Map([
     ['name', ['Name', 'input']],
-    ['daysOfTheWeek', ['Days of the week', 'input']],
-    ['time', ['Time', 'input']]
+    ['dateTime', ['Date/Time', 'input']]
 ])
 
 export const studentParams = new Map([
     ['name', ['Name', 'input']],
     ['birthday', ['Birthday', 'input']],
+    ['registrationId', ['Registration Id']],
     ['interactiveGroupId', ['Group', 'search']]
 ])
 

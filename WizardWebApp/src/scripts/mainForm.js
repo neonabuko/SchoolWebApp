@@ -1,5 +1,5 @@
 import axios from "axios";
-import {routes, URL} from "./variables.js";
+import {apiRoutes, URL} from "./variables.js";
 
 export default {
     methods: {
@@ -10,7 +10,7 @@ export default {
                 if ((this.matchedSuggestions ?? []).length === 0 && (name ?? '').length > 0) {
                     try {
                         const response = await axios.get(
-                            URL + `${routes.at(this.entityIndex - 1)}/by-name/${name}`
+                            URL + `${apiRoutes.at(this.entityIndex - 1)}/by-name/${name}`
                         )
                         const suggestions = await response.data;
                         this.suggestions.push(...suggestions);
@@ -33,12 +33,13 @@ export default {
             this.entityIndex = await this.$route.params.entityIndex;
         },
         async createEntity(entityIndex, params) {
-            const baseRoute = routes.at(entityIndex);
+            const baseRoute = apiRoutes.at(entityIndex);
             try {
                 await axios.post(URL + `${baseRoute}`, params);
                 alert('Created.');
                 this.goBack();
             } catch (error) {
+                console.log(params)
                 console.error('Error creating entity:', error);
             }
         }

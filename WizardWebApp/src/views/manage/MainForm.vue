@@ -15,10 +15,8 @@
         <h1 class="h2">New {{ entityNames.at(entityIndex) }}</h1>
       </div>
 
-      <div class="m-1"
-           v-for="(key, paramIndex) in entityParams.at(entityIndex)"
-           :key="paramIndex">
-
+      <div v-for="(key, paramIndex) in entityParams.at(entityIndex)" :key="paramIndex">
+        
         <div>
           <dynamic-input :key="paramIndex"
                          :type="key.at(1).at(1)"
@@ -60,7 +58,7 @@
 </template>
 
 <script>
-import {teacherParams, groupParams, studentParams, classParams, routes} from '../../scripts/variables.js'
+import {teacherParams, groupParams, studentParams, classParams, apiRoutes} from '../../scripts/variables.js'
 import general from "../../scripts/general.js";
 import Flatpickr from 'vue-flatpickr-component'
 import 'flatpickr/dist/flatpickr.css'
@@ -72,7 +70,7 @@ export default {
 
   data() {
     return {
-      routes,
+      routes: apiRoutes,
       suggestions: [],
       entityIndex: '',
       entityNames: ['Teacher', 'Group', 'Student', 'Class'],

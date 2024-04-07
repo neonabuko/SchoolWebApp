@@ -1,262 +1,309 @@
 :root {
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    font-kerning: auto;
-    -webkit-font-kerning: auto;
-    -moz-osx-font-smoothing: grayscale;
-    --light-grad-pink-blue: radial-gradient(ellipse at 40% 0%, #bf398910 0, transparent 75%),
-        radial-gradient(ellipse at 60% 0%, #096bde10 0, transparent 75%);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-kerning: auto;
+  -webkit-font-kerning: auto;
+  -moz-osx-font-smoothing: grayscale;
+  --light-grad-pink-blue: radial-gradient(
+      ellipse at 40% 0%,
+      #bf398910 0,
+      transparent 75%
+    ),
+    radial-gradient(ellipse at 60% 0%, #096bde10 0, transparent 75%);
 }
 
 .navbar-toggler {
-    border: none;
+  border: none;
 }
 
 .nav-link:hover {
-    text-decoration: none;
+  text-decoration: none;
+}
+
+.loading-container {
+  position: relative;
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px; /* Distance of the underline from the text */
+  left: 0;
+  width: 100%;
+  height: 2px; /* Underline thickness */
+  background-color: #007bff; /* Tab active color */
+  transform: scaleX(0); /* Initially invisible */
+  transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.nav-link.tab-active::after {
+  transform: scaleX(1); /* Expand the underline when tab is active */
+}
+
+.spinner {
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-top: 3px solid #1764b1;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .container .custom-card-div {
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-row-gap: 2vw;
-    grid-column-gap: 2vw;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-row-gap: 2vw;
+  grid-column-gap: 2vw;
 }
 
 .container .custom-card-div-middle {
-    padding: .2vw;
+  padding: 0.2vw;
 }
 
 .container .custom-card-div-inside {
-    background: var(--light-grad-pink-blue);
+  background: var(--light-grad-pink-blue);
 }
 
 .custom-card-inner-body {
-    overflow: hidden;
-    text-align: center;
+  overflow: hidden;
+  text-align: center;
 }
 
 .wizard-card-img {
-    border-radius: 50%;
-    scale: 78%
+  border-radius: 50%;
+  scale: 78%;
 }
 
 .card {
-    transition: transform .5s;
-    transition-duration: 0.3s;
-    transition-timing-function: ease;
-    transition-property: transform;
-    transform: scale(1);
-    overflow-x: hidden;
+  transition: transform 0.5s;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  transition-property: transform;
+  transform: scale(1);
+  overflow-x: hidden;
 }
 
 .card:hover {
-    transform: scale(1.04);
+  transform: scale(1.04);
 }
 
 html,
 body {
-    font-family: "Mulish", sans-serif;
-    font-optical-sizing: auto;
-    height: 100%;
+  font-family: "Mulish", sans-serif;
+  font-optical-sizing: auto;
+  height: 100%;
 }
 
 .nav-logo {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
 #dropdown-item-container:hover {
-    background-color: rgb(13, 110, 253);
+  background-color: rgb(13, 110, 253);
 }
 
 #dropdown-item-container {
-    padding: 5px 5px 5px 8px;
-    border-bottom: 1px solid #474e55;
+  padding: 5px 5px 5px 8px;
+  border-bottom: 1px solid #474e55;
 }
 
 .dropdown {
-    display: block;
-    border-left: 1px solid #474e55;
-    border-right: 1px solid #474e55;
-    overflow: scroll;
-    overflow-x: hidden;
-    max-height: 140px;
+  display: block;
+  border-left: 1px solid #474e55;
+  border-right: 1px solid #474e55;
+  overflow: scroll;
+  overflow-x: hidden;
+  max-height: 140px;
 }
 
 ::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #555;
+  background: #555;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #888;
+  background: #888;
 }
 
-::-webkit-scrollbar-corner {}
+::-webkit-scrollbar-corner {
+}
 
 #main-form-submit-btn {
-    margin-top: 3vh
+  margin-top: 3vh;
 }
 
 .flex-items-center {
-    align-items: center !important;
+  align-items: center !important;
 }
 
 .flex-justify-center {
-    justify-content: center !important;
+  justify-content: center !important;
 }
 
 .navbar {
-    background: var(--light-grad-pink-blue);
+  background: var(--light-grad-pink-blue);
 }
 
 .main-form-container {
-    max-width: 350px;
-    padding: 40px 1.5rem 1.5rem;
+  max-width: 350px;
+  padding: 40px 1.5rem 1.5rem;
 }
 
 .student-name {
-    text-align: left;
+  text-align: left;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .main-table {
-    width: 99%;
-    padding: 2vw;
-    overflow: hidden;
-    display: grid;
-    align-items: center;
-    grid-template-columns: 1fr;
-    grid-template-rows: 10vh auto auto;
+  width: 99%;
+  padding: 2vw;
+  overflow: hidden;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr;
+  grid-template-rows: 10vh auto auto;
 }
 
 #interactive-table {
-    max-width: 40em;
+  max-width: 40em;
 }
 
 #interactive-table-div {
-    
 }
 
 #interactive-table-inner-div {
-    display: grid;
-    grid-template-rows: 50% 50%;
-    grid-template-columns: 100% 30%;
-    grid-row-gap: 40px;
-    grid-column-gap: 20px;
-    max-width: 577px;
+  display: grid;
+  grid-template-rows: 50% 50%;
+  grid-template-columns: 100% 30%;
+  grid-row-gap: 40px;
+  grid-column-gap: 20px;
+  max-width: 577px;
 }
 
 #interactive-table-inner-div th {
-    background: rgba(46, 149, 255, 0.16);
+  background: rgba(46, 149, 255, 0.16);
 }
 
 #interactive-table-inner-div table {
-    table-layout: fixed;
+  table-layout: fixed;
 }
 
 #main-form-header-div {
-    display: grid;
-    grid-template-columns: 10% 90%;
-    grid-template-rows: 90%;
+  display: grid;
+  grid-template-columns: 10% 90%;
+  grid-template-rows: 90%;
 }
 
 .main-form-logo {
-    height: 80px;
-    width: 80px;
+  height: 80px;
+  width: 80px;
 }
 
 .shining-green-check {
-    opacity: 0;
-    transform: scale(0.5);
-    animation: shine-in 0.5s ease forwards,
-        shine 0.5s infinite alternate;
+  opacity: 0;
+  transform: scale(0.5);
+  animation: shine-in 0.5s ease forwards, shine 0.5s infinite alternate;
 }
 
 @keyframes shine-in {
-    0% {
-        opacity: 0;
-        transform: scale(0.9);
-    }
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
 
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes shine {
-    from {
-        filter: brightness(1);
-    }
+  from {
+    filter: brightness(1);
+  }
 
-    to {
-        filter: brightness(1.5);
-    }
+  to {
+    filter: brightness(1.5);
+  }
 }
 
-
 table {
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-collapse: collapse;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-collapse: collapse;
 }
 
 table th,
 table td {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 .day {
-    text-align: center;
+  text-align: center;
 }
 
 @media screen and (max-width: 768px) {
+  table th,
+  table td {
+    font-size: 0.82em;
+  }
 
-    table th,
-    table td {
-        font-size: 0.82em;
-    }
+  .custom-row {
+    width: 364px;
+  }
 
-    .custom-row {
-        width: 364px;
-    }
+  .container .custom-card-div {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
 
-    .container .custom-card-div {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
-    }
+  .form-label {
+    font-size: 12px;
+  }
 
-    .form-label {
-        font-size: 12px;
-    }
+  #interactive-table-inner-div td {
+    max-width: 100px;
+  }
 
-    #interactive-table-inner-div td {
-        max-width: 100px;
-    }
-
-    #interactive-table-inner-div {
-        grid-template-rows: 50% 50%;
-        grid-template-columns: 92% 20%;
-        grid-row-gap: 30px;
-        grid-column-gap: 7px;
-        max-width: 390px;
-        overflow: hidden;
-    }
+  #interactive-table-inner-div {
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 92% 20%;
+    grid-row-gap: 30px;
+    grid-column-gap: 7px;
+    max-width: 390px;
+    overflow: hidden;
+  }
 }

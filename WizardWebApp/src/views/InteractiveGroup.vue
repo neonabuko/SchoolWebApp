@@ -7,12 +7,12 @@
         <button @click="goBack"
                 title="Go back"
                 type="button"
-                class="border-0 bg-body-tertiary h5 ">
+                class="border-0 bg-body-tertiary h5">
           <i class="fas fa-chevron-left"></i>
         </button>
         {{ interactiveGroup.name }}
       </h1>
-      <h5>{{ interactiveGroup.daysOfTheWeek + ' ' + interactiveGroup.time }}</h5>
+      <h5>{{ interactiveGroup.dateTime }}</h5>
     </div>
 
     <div v-for="student in studentsClasses.keys()"
