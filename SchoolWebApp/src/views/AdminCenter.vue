@@ -1,7 +1,7 @@
 <template>
-  <div class="container py-3">
-    <div class="mb-5 admin-center-header">
-        <h1 class="mx-1">Admin Center</h1>
+  <main class="container py-3">
+    <div class="admin-center-header">
+        <h1>Admin Center</h1>
       </div>
     <div class="custom-card-div">
       <div v-for="name in actions" :key="name" class="custom-card-div-middle">
@@ -11,7 +11,7 @@
               <h4 class="card-title icon-link">{{ name }}</h4>
             </div>
             <div class="card-img">
-              <img alt="wizard-logo" class="card-img wizard-card-img shadow-lg" src="../assets/wizard-logo.jpg">
+              <img alt="app-logo" class="card-img app-card-img" src="../assets/vue.svg">
             </div>
             <div class="card-footer text-center">
               <i class="fas fa-edit"></i>
@@ -21,7 +21,7 @@
         </router-link>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 <script>
 

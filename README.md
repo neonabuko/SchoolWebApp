@@ -1,4 +1,4 @@
-# Wizard Web App
+# School Web App
 
 ### Running:
 ```bash

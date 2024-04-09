@@ -1,7 +1,7 @@
 <template>
   <main class="w-100 m-auto main-form-container">
     <form @submit.prevent="handleSubmit">
-      <img src="../../assets/wizard-logo.jpg"
+      <img src="../../assets/vue.svg"
            alt="logo"
            class="mb-3 shadow main-form-logo"
            style="border-radius: 50%">

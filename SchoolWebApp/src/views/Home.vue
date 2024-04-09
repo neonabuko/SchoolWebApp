@@ -1,6 +1,8 @@
 <template>
-  <div class="container py-3">
-    <h1 class="mx-1 mb-5">Today</h1>
+  <main class="container py-3">
+    <div class="home-header">
+      <h1>Today</h1>
+    </div>
     <div class="custom-card-div">
       <router-link :to="{ name: 'Interactive Group', params: { groupId: entry.at(0).id }}"
                    :key="entry.at(0).id"
@@ -11,9 +13,9 @@
             <h2 class="card-title icon-link">{{ entry.at(0).name }}</h2><br>
             <h5 class="card-title icon-link">{{ entry.at(1).name }}</h5>
           </div>
-          <img alt="wizard-logo"
-               class="card-img shadow-lg wizard-card-img"
-               src="../assets/wizard-logo.jpg">
+          <img alt="app-logo"
+               class="card-img app-card-img"
+               src="../assets/vue.svg">
           <div class="card-footer">
             <i class="fas fa-calendar-days mx-1" style="color: #ec0927"></i>
             <h6 class="card-subtitle icon-link">{{ entry.at(0).dateTime }}</h6><br>
@@ -21,8 +23,7 @@
         </div>
       </router-link>
     </div>
-  </div>
-
+  </main>
 </template>
 
 <script>

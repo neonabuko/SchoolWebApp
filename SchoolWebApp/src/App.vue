@@ -1,18 +1,18 @@
 <template>
   <header>
     <div>
-      <nav class="navbar navbar-expand-sm border-dark shadow-sm" id="nav-wizard">
+      <nav class="navbar navbar-expand-sm border-dark shadow-sm" id="app-nav">
         <router-link to="/" class="" href="#">
-          <a class="nav-title navbar-brand">Wizard App</a>
+          <a class="nav-title navbar-brand">School Web App</a>
         </router-link>
 
         <i aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
-          class="navbar-toggler" data-bs-target="#nav-wizard-items" data-bs-toggle="collapse" type="button"
+          class="navbar-toggler" data-bs-target="#app-nav-items" data-bs-toggle="collapse" type="button"
           id="nav-menu-button">
           <i class="fas fa-navicon"></i>
         </i>
 
-        <div class="collapse navbar-collapse justify-content-end" id="nav-wizard-items">
+        <div class="collapse navbar-collapse justify-content-end" id="app-nav-items">
 
           <ul class="navbar-nav" ref="navLinks">
             <li class="navbar-list" v-for="route in routes">
@@ -34,25 +34,24 @@
       </nav>
     </div>
   </header>
+  
   <router-view></router-view>
 
-  <footer class="footer mt-3" role="contentinfo">
-    <h2 class='sr-only'>Footer</h2>
+  <footer class="app-footer" role="contentinfo">
     <div class="d-flex flex-justify-center flex-items-center flex-column-reverse flex-lg-row flex-wrap flex-lg-nowrap">
       <div class="d-flex flex-items-center flex-shrink-0 mx-2">
-        <router-link aria-label="Homepage" title="GitHub" class="small mx-2 mb-1" to="/">
-          <img src="./assets/wizard-logo.jpg" style="height: 30px; width: 30px; border-radius: 50%" alt="logo">
+        <router-link aria-label="Home" title="SchoolWebApp" class="small mx-2 mb-1" to="/">
+          <img src="./assets/vue.svg" style="height: 25px; width: 25px" alt="logo">
         </router-link>
         <span class="small">
-          &copy; 2024 Wizard App
+          &copy; 2024 School Web App
         </span>
       </div>
-
     </div>
   </footer>
 </template>
 <script>
-import { appRoutes } from '../src/scripts/variables'
+import { appRoutes } from './scripts/variables'
 
 export default {
   data() {

@@ -59,8 +59,8 @@
   border: 3px solid rgba(0, 0, 0, 0.1);
   border-top: 3px solid #1764b1;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 20px;
+  height: 20px;
   animation: spin 1s linear infinite;
   position: absolute;
   top: 50%;
@@ -75,6 +75,26 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.home-header {
+  text-wrap: nowrap;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.home-header h1 {
+  font-weight: 300;
+}
+
+main {
+  flex: 1
 }
 
 .container .custom-card-div {
@@ -95,10 +115,17 @@
 
 .admin-center-header {
   text-wrap: nowrap;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.admin-center-header h1 {
+  font-weight: 300;
 }
 
 .container .custom-card-div-inside {
-  background: #394dbf0e;
+  background: #394dbf06;
 }
 
 .custom-card-inner-body {
@@ -107,8 +134,12 @@
   max-height: 50px;
 }
 
-.wizard-card-img {
-  border-radius: 50%;
+.custom-card-inner-body h4 {
+  font-weight: 250;
+}
+
+.app-card-img {
+  border-radius: 10%;
   scale: 80%;
 }
 
@@ -132,13 +163,15 @@ body {
   height: 100%;
 }
 
+
+
 .nav-logo {
   width: 40px;
   height: 40px;
   border-radius: 50%;
 }
 
-#nav-wizard {
+#app-nav {
   padding: .7rem 1.5rem;
   height: 3.6 rem;
 }
@@ -282,10 +315,6 @@ table {
 table th,
 table td {
   vertical-align: middle;
-}
-
-.day {
-  text-align: center;
 }
 
 @media screen and (max-width: 768px) {

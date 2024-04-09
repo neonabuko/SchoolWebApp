@@ -4,8 +4,8 @@ import "./style.css";
 import App from "./App.vue";
 import router from "./router/index.js";
 import { createStore } from "vuex";
-import { apiRoutes } from "../src/scripts/variables.js";
-import { URL } from "../src/scripts/variables.js";
+import { apiRoutes } from "./scripts/variables.js";
+import { URL } from "./scripts/variables.js";
 import axios from "axios";
 
 const store = createStore({
