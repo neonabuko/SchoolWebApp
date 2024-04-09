@@ -4,8 +4,8 @@
       <button @click="goBack" title="Go back" type="button" class="border-0 bg-body-tertiary">
         <i class="fas fa-chevron-left"></i>
       </button>
-      <div>
-        <h2 class="h1 mx-3" style="font-size: 40px">{{ entityNames.at(routeId) }}</h2>
+      <div class="">
+        <h1>{{ entityNames.at(routeId) }}</h1>
       </div>
       <div class="btn-new-entity d-flex justify-content-end w-100 mx-1 mb-1">
       <router-link :to="{ name: 'MainForm', params: { entityIndex: routeId } }">
@@ -48,12 +48,12 @@
 
 import {
   adminCenterEntityNames,
-  classParams,
+  lessonParams,
   groupParams,
   studentParams,
   teacherParams
-} from "../../scripts/variables.js";
-import general from "../../scripts/general.js";
+} from "../scripts/variables.js";
+import general from "../scripts/general.js";
 import MainForm from "./MainForm.vue";
 import { mapState, mapActions } from "vuex";
 
@@ -66,7 +66,7 @@ export default {
         teacherParams,
         groupParams,
         studentParams,
-        classParams
+        lessonParams
       ]
     }
   }, computed: {

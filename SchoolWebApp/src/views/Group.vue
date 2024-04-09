@@ -1,8 +1,8 @@
 <template>
   <main class="container py-5 flex-justify-center"
-        id="interactive-table-div">
+        id="school-table-div">
 
-    <div class="interactive-group-title mb-5 text-center w-100">
+    <div class="group-title mb-5 text-center w-100">
       <h1>
         <button @click="goBack"
                 title="Go back"
@@ -22,7 +22,7 @@
         <h4 class="text-body mx-1">{{ student.name }}</h4>
       </router-link>
       
-      <div id="interactive-table-inner-div">
+      <div id="school-table-inner-div">
         <table class="table table-bordered table-striped border-secondary-subtle"
                :id="student.id">
           <thead>
@@ -103,7 +103,7 @@ export default {
         delete iClass.studentPresent
         
         console.log(iClass)
-        await axios.put(`${URL}/interactive-classes/${iClassId}`, iClass)
+        await axios.put(`${URL}/lessons/${iClassId}`, iClass)
             .then(() => {
               this.submittedSuccessfully = true
             })

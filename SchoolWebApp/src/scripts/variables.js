@@ -2,9 +2,9 @@ export const URL =  "http://100.102.72.128:5170"
 
 export const apiRoutes = [
     '/teachers',
-    '/interactive-groups',
+    '/groups',
     '/students',
-    '/interactive-classes'
+    '/lessons'
 ]
 
 export const appRoutes = [
@@ -36,8 +36,8 @@ export const studentParams = new Map([
     ['interactiveGroupId', ['Group', 'search']]
 ])
 
-export const classParams = new Map([
-    ['lesson', ['L', 'input']],
+export const lessonParams = new Map([
+    ['name', ['Name', 'input']],
     ['dateTime', ['Date', 'date']],
     ['oral', ['Oral', 'select']],
     ['hwDelivered', ['HW?', 'checkbox']],

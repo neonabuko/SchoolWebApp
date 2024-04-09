@@ -58,12 +58,12 @@
 </template>
 
 <script>
-import {teacherParams, groupParams, studentParams, classParams, apiRoutes} from '../../scripts/variables.js'
-import general from "../../scripts/general.js";
+import {teacherParams, groupParams, studentParams, lessonParams, apiRoutes} from '../scripts/variables.js'
+import general from "../scripts/general.js";
 import Flatpickr from 'vue-flatpickr-component'
 import 'flatpickr/dist/flatpickr.css'
-import mainForm from "../../scripts/mainForm.js";
-import DynamicInput from "../../components/DynamicInput.vue";
+import mainForm from "../scripts/mainForm.js";
+import DynamicInput from "../components/DynamicInput.vue";
 
 export default {
   components: {Flatpickr, DynamicInput},
@@ -74,7 +74,7 @@ export default {
       suggestions: [],
       entityIndex: '',
       entityNames: ['Teacher', 'Group', 'Student', 'Class'],
-      entityParams: [teacherParams, groupParams, studentParams, classParams],
+      entityParams: [teacherParams, groupParams, studentParams, lessonParams],
       entitySubmit: {},
       timeoutId: null,
       searchInput: '',

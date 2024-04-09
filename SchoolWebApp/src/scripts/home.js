@@ -4,7 +4,7 @@ import {URL} from './variables.js';
 export default {
     methods: {
         async getInteractiveGroupsAsync() {
-            let response = await axios.get(URL + "/interactive-groups")
+            let response = await axios.get(URL + "/groups")
             let interactiveGroups = await response.data
             
             let today = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit' }).replace(/\//g, '/');

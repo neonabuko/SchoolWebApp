@@ -10,11 +10,11 @@ export default {
         },
         async getClasses() {
             const studentId = this.$route.params.studentId;
-            let response = await axios.get(URL + `/interactive-classes/student/${studentId}`)
+            let response = await axios.get(URL + `/lessons/student/${studentId}`)
             this.interactiveClasses = response.data
         },
         async deleteClass(id) {
-            await axios.delete(URL + `/interactive-classes/${id}`)
+            await axios.delete(URL + `/lessons/${id}`)
             await this.getClasses()
         }
     }

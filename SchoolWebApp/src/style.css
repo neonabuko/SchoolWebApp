@@ -110,7 +110,6 @@ main {
 .container .custom-card-div-middle {
   padding: 0.2vw;
   min-width: 140px;
-  
 }
 
 .admin-center-header {
@@ -162,8 +161,6 @@ body {
   font-optical-sizing: auto;
   height: 100%;
 }
-
-
 
 .nav-logo {
   width: 40px;
@@ -237,34 +234,17 @@ a {
 }
 
 .main-table {
-  width: 99%;
   padding: 2vw;
   overflow: hidden;
-  display: grid;
-  align-items: center;
-  grid-template-columns: 1fr;
-  grid-template-rows: 10vh auto auto;
+  display: flex;
 }
 
-#interactive-table {
-  max-width: 40em;
+.main-table-header {
+  margin-bottom: 10px;
 }
 
-#interactive-table-inner-div {
-  display: grid;
-  grid-template-rows: 50% 50%;
-  grid-template-columns: 100% 30%;
-  grid-row-gap: 40px;
-  grid-column-gap: 20px;
-  max-width: 577px;
-}
-
-#interactive-table-inner-div th {
-  background: rgba(46, 149, 255, 0.16);
-}
-
-#interactive-table-inner-div table {
-  table-layout: fixed;
+.main-table-header h1 {
+  font-weight: 250;
 }
 
 #main-form-header-div {
@@ -308,7 +288,7 @@ a {
 
 table {
   text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
   border-collapse: collapse;
 }
 
@@ -336,11 +316,11 @@ table td {
     font-size: 12px;
   }
 
-  #interactive-table-inner-div td {
+  #school-table-inner-div td {
     max-width: 100px;
   }
 
-  #interactive-table-inner-div {
+  #school-table-inner-div {
     grid-template-rows: 50% 50%;
     grid-template-columns: 92% 20%;
     grid-row-gap: 30px;
